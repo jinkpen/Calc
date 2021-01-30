@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">Calc</string>
+    <string name="txtClear">AC</string>
+    <string name="txtBackspace">\u232B</string>
+    <string name="txtPosNeg">\u207A\u2215\u208B</string>
+    <string name="txtDivide">\u00F7</string>
+    <string name="txt7">7</string>
+    <string name="txt8">8</string>
+    <string name="txt9">9</string>
+    <string name="txtMultiply">\u00D7</string>
+    <string name="txt4">4</string>
+    <string name="txt5">5</string>
+    <string name="txt6">6</string>
+    <string name="txtSubtract">\u2212</string>
+    <string name="txt1">1</string>
+    <string name="txt2">2</string>
+    <string name="txt3">3</string>
+    <string name="txtAdd">\u002B</string>
+    <string name="txt0">0</string>
+    <string name="txtDecimal">\u002E</string>
+    <string name="txtEquals">\u003D</string>
+</resources>
