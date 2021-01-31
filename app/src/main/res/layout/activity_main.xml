@@ -32,7 +32,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_margin="5dp"
-                android:layout_span="4" />
+                android:layout_span="4"
+                android:inputType="text" />
         </TableRow>
 
 

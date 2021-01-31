@@ -7,6 +7,9 @@ public class Calculator {
     private String result;
 
     public Calculator() {
+        this.operand1 = "";
+        this.operand2 = "";
+        this.operator = "";
         this.result = "";
     }
     public String getOperand1() {return  operand1;}
@@ -18,12 +21,17 @@ public class Calculator {
     public void setOperator(String operator){this.operator = operator;}
     public void setResult(String result){this.result = result;}
 
+    //Method that resets calculator values to empty strings
+    public void reset() {
+        this.operand1 = "";
+        this.operand2 = "";
+        this.operator = "";
+        this.result = "";
+    }
+
     //Method that returns display string for EditText teInput
-    public String displayTEInput() {
-        if (!operator.isEmpty()) {
-            return operator + "   " + operand2;
-        }
-        else return operand2;
+    public String updateTEInput() {
+        return operator + "   " + operand2;
     }
 
     public void calculate (String operand1, String operand2, String operator){

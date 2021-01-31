@@ -3,7 +3,7 @@ package com.example.calc;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.*;
-import android.view.View;
+import android.view.*;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -41,32 +41,124 @@ public class MainActivity extends AppCompatActivity {
 
         teInput = findViewById(R.id.teInput);
         tvResult = findViewById(R.id.tvResult);
+
+        //Set listeners for UI
+        btn0.setOnClickListener(numberListener);
+        btn1.setOnClickListener(numberListener);
+        btn2.setOnClickListener(numberListener);
+        btn3.setOnClickListener(numberListener);
+        btn4.setOnClickListener(numberListener);
+        btn5.setOnClickListener(numberListener);
+        btn6.setOnClickListener(numberListener);
+        btn7.setOnClickListener(numberListener);
+        btn8.setOnClickListener(numberListener);
+        btn9.setOnClickListener(numberListener);
+
+        btnClear.setOnClickListener(clearListener);
+        btnBackspace.setOnClickListener(backspaceListener);
+        btnPosNeg.setOnClickListener(posNegListener);
+        btnDivide.setOnClickListener(operatorListener);
+        btnMultiply.setOnClickListener(operatorListener);
+        btnSubtract.setOnClickListener(operatorListener);
+        btnAdd.setOnClickListener(operatorListener);
+        btnEquals.setOnClickListener(operatorListener);
+        btnDecimal.setOnClickListener(decimalListener);
+
     } //end onCreate
 
-    //Listener for buttons with digits 1 - 9
+    //Listener for buttons with digits
     View.OnClickListener numberListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
             Button thisButton = findViewById(v.getId());
-            String btnClick = thisButton.getText().toString();
+            String click = thisButton.getText().toString();
+            System.out.println(click);
+            System.out.println(calc.getOperand1());
+            //If operator is =, reset calculator and UI display
+            if (calc.getOperator().equals("\u003D")) {
+                calc.reset();
+                teInput.setText(calc.updateTEInput());
+                tvResult.setText("0");
+            }
+            if (calc.getOperator().isEmpty()) {
+                //If click is 0 and 0 is not the only element in operand1, append click to operand1
+                if (click.equals("0")) {
+                    if (!(calc.getOperand1().length() == 1 && calc.getOperand1().charAt(0) == '0')) {
+                        calc.setOperand1(calc.getOperand1() + click);
+                        teInput.setText(calc.updateTEInput());
+                    }
+                }
+                else {
+                    calc.setOperand1(calc.getOperand1() + click);
+                    teInput.setText(calc.updateTEInput());
+                }
+            }
+            else {
+                if (click.equals("0")) {
+                    //If click is 0 and 0 is not the only element in operand2, append click to operand2
+                    if (!(calc.getOperand2().length() == 1 && calc.getOperand2().charAt(0) == '0')) {
+                        calc.setOperand2(calc.getOperand2() + click);
+                        teInput.setText(calc.updateTEInput());
+                    }
+                }
+                else {
+                    calc.setOperand2(calc.getOperand2() + click);
+                    teInput.setText(calc.updateTEInput());
+                }
+            }
         }
     }; //end numberListener
 
-    //Listener for 0 button
-    View.OnClickListener zeroListener = new View.OnClickListener() {
+    //Listener for clear button
+    View.OnClickListener clearListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
             Button thisButton = findViewById(v.getId());
-            String btnClick = thisButton.getText().toString();
+            String click = thisButton.getText().toString();
+            //Reset calculator and update UI
+            calc.reset();
+            teInput.setText(calc.updateTEInput());
+            tvResult.setText("0");
         }
-    }; //end zeroListener
+    };// end clearListener
+
+    //Listener for backspace button
+    View.OnClickListener backspaceListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            Button thisButton = findViewById(v.getId());
+            String click = thisButton.getText().toString();
+            //If there is no operator and operand1 is longer than 0, remove the last
+            //Else if operator
+
+            //If the operator is equals, reset the calculator variables to empty strings
+                //Update tvResult to display "0"
+            //(Else) if
+        }
+    };//end backspaceListener
+
+    //Listener for positive/negative toggle button
+    View.OnClickListener posNegListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            if (calc.getOperator().isEmpty()) {
+                if (calc.getOperand1().contains("-")) {
+                    calc.setOperand1(calc.getOperand1().substring(1));
+                }
+                else {
+
+                }
+            }
+
+        }
+    };//end posNegListener
 
     //Listener for operator buttons
     View.OnClickListener operatorListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
             Button thisButton = findViewById(v.getId());
-            String btnClick = thisButton.getText().toString();
+            String click = thisButton.getText().toString();
         }
     }; //end operatorListener
 
@@ -75,32 +167,9 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public void onClick(View v) {
             Button thisButton = findViewById(v.getId());
-            String btnClick = thisButton.getText().toString();
+            String click = thisButton.getText().toString();
         }
-    };
+    };//end decimalListener
 
-    //Listener for positive/negative toggle button
-    View.OnClickListener posNegListener = new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            Button thisButton = findViewById(v.getId());
-            String btnClick = thisButton.getText().toString();
-        }
-    };//end posNegListener
 
-    View.OnClickListener backspaceListener = new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            Button thisButton = findViewById(v.getId());
-            String btnClick = thisButton.getText().toString();
-        }
-    };//end backspaceListener
-
-    View.OnClickListener clearListener = new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            Button thisButton = findViewById(v.getId());
-            String btnClick = thisButton.getText().toString();
-        }
-    };// end clearListener
-}
+}//end class
