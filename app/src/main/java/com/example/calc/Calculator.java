@@ -30,10 +30,9 @@ public class Calculator {
     }
 
     //Method that returns display string for EditText teInput
-    public String updateTEInput() {
-        return operator + "   " + operand2;
-    }
+    public String updateTEInput() {return operator + "   " + operand2;}
 
+    //Method to perform simple calculations
     public void calculate (String operand1, String operand2, String operator){
         if (!operator.isEmpty() && !operand2.isEmpty()) {
             switch (operator) {

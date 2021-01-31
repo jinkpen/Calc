@@ -101,9 +101,6 @@ public class MainActivity extends AppCompatActivity {
     View.OnClickListener clearListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            Button thisButton = findViewById(v.getId());
-            String click = thisButton.getText().toString();
-            //Reset calculator and update UI
             calc.reset();
             teInput.setText(calc.updateTEInput());
             tvResult.setText("0");
@@ -114,14 +111,31 @@ public class MainActivity extends AppCompatActivity {
     View.OnClickListener backspaceListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            Button thisButton = findViewById(v.getId());
-            String click = thisButton.getText().toString();
-            //If there is no operator and operand1 is longer than 0, remove the last
-            //Else if operator
+            //If there is no operator
+            if (calc.getOperator().isEmpty()) {
+                //If operand1 is longer than 0, remove last element
+                if (calc.getOperand1().length() > 0) {
+                    calc.setOperand1(calc.getOperand1().substring(0, calc.getOperand1().length() - 1));
+                }
+            }
+            //Else if the operator is equals, reset the calculator variables to empty strings
+            else if (calc.getOperator().equals("\u003D")) {
+                calc.reset();
+                tvResult.setText("0");
+            }
+            else {
+                // If operand2 is longer than 0, remove last element
+                if (calc.getOperand2().length() > 0) {
+                    calc.setOperand2(calc.getOperand2().substring(0, calc.getOperand2().length() -1));
+                }
+                //Else, remove the operator
+                else {
+                    calc.setOperator("");
+                }
+            }
 
-            //If the operator is equals, reset the calculator variables to empty strings
-                //Update tvResult to display "0"
-            //(Else) if
+
+
         }
     };//end backspaceListener
 
@@ -134,10 +148,15 @@ public class MainActivity extends AppCompatActivity {
                     calc.setOperand1(calc.getOperand1().substring(1));
                 }
                 else {
-
+                    calc.setOperand1("-" + calc.getOperand1());
                 }
             }
-
+            else {
+                if (calc.getOperand2().contains("-")) {
+                    calc.setOperand2(calc.getOperand2().substring(1));
+                }
+            }
+            teInput.setText(calc.updateTEInput());
         }
     };//end posNegListener
 
@@ -154,8 +173,17 @@ public class MainActivity extends AppCompatActivity {
     View.OnClickListener decimalListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            Button thisButton = findViewById(v.getId());
-            String click = thisButton.getText().toString();
+            if (calc.getOperator().isEmpty()) {
+                if (!calc.getOperand1().contains(".")) {
+                    calc.setOperand1(".");
+                }
+            }
+            else {
+                if (!calc.getOperand2().contains(".")) {
+                    calc.setOperand2(".");
+                }
+            }
+            teInput.setText(calc.updateTEInput());
         }
     };//end decimalListener
 
