@@ -81,27 +81,15 @@ public class MainActivity extends AppCompatActivity {
                 tvResult.setText("0");
             }
             if (calc.getOperator().isEmpty()) {
-                //If click is 0 and 0 is not the only element in operand1, append click to operand1
-                if (click.equals("0")) {
-                    if (!(calc.getOperand1().length() == 1 && calc.getOperand1().charAt(0) == '0')) {
+                //If 0 is not the only element in operand1, append click to operand1
+                if (!(calc.getOperand1().length() == 1 && calc.getOperand1().charAt(0) == '0')) {
                         calc.setOperand1(calc.getOperand1() + click);
                         teInput.setText(calc.updateTEInput());
-                    }
-                }
-                else {
-                    calc.setOperand1(calc.getOperand1() + click);
-                    teInput.setText(calc.updateTEInput());
                 }
             }
             else {
-                if (click.equals("0")) {
-                    //If click is 0 and 0 is not the only element in operand2, append click to operand2
-                    if (!(calc.getOperand2().length() == 1 && calc.getOperand2().charAt(0) == '0')) {
-                        calc.setOperand2(calc.getOperand2() + click);
-                        teInput.setText(calc.updateTEInput());
-                    }
-                }
-                else {
+                //If 0 is not the only element in operand2, append click to operand2
+                if (!(calc.getOperand2().length() == 1 && calc.getOperand2().charAt(0) == '0')) {
                     calc.setOperand2(calc.getOperand2() + click);
                     teInput.setText(calc.updateTEInput());
                 }
