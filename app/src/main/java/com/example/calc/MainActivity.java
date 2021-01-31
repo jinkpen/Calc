@@ -175,12 +175,22 @@ public class MainActivity extends AppCompatActivity {
         public void onClick(View v) {
             if (calc.getOperator().isEmpty()) {
                 if (!calc.getOperand1().contains(".")) {
-                    calc.setOperand1(".");
+                    if (calc.getOperand1().length() > 0) {
+                        calc.setOperand1(calc.getOperand1() + ".");
+                    }
+                    else {
+                        calc.setOperand1(calc.getOperand1() + "0.");
+                    }
                 }
             }
             else {
                 if (!calc.getOperand2().contains(".")) {
-                    calc.setOperand2(".");
+                    if (calc.getOperand2().length() > 0) {
+                        calc.setOperand2(calc.getOperand2() + ".");
+                    }
+                    else {
+                        calc.setOperand2(calc.getOperand2() + "0.");
+                    }
                 }
             }
             teInput.setText(calc.updateTEInput());
