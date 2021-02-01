@@ -30,7 +30,13 @@ public class Calculator {
     }
 
     //Method that returns display string for EditText teInput
-    public String updateTEInput() {return operator + "   " + operand2;}
+    public String updateTVInput() {
+        if (operator.isEmpty()) {
+            return operand1;
+        } else {
+           return operator + "   " + operand2;
+        }
+    }
 
     //Method to perform simple calculations
     public void calculate (){

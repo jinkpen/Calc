@@ -7,7 +7,7 @@ import android.view.View;
 
 
 public class MainActivity extends AppCompatActivity {
-    private EditText teInput;
+    private TextView tvInput;
     private TextView tvResult;
     Calculator calc = new Calculator();
 
@@ -39,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
         Button btnEquals = findViewById(R.id.btnEquals);
         Button btnDecimal = findViewById(R.id.btnDecimal);
 
-        teInput = findViewById(R.id.teInput);
+        tvInput = findViewById(R.id.tvInput);
         tvResult = findViewById(R.id.tvResult);
 
         //Set listeners for UI
@@ -80,23 +80,23 @@ public class MainActivity extends AppCompatActivity {
                 //If 0 is not the only element in operand1, append click to operand1
                 if (!(calc.getOperand1().length() == 1 && calc.getOperand1().charAt(0) == '0')) {
                         calc.setOperand1(calc.getOperand1() + click);
-                        teInput.setText(calc.updateTEInput());
+                        tvInput.setText(calc.updateTVInput());
                 }
             }
             else {
                 //If 0 is not the only element in operand2, append click to operand2
                 if (!(calc.getOperand2().length() == 1 && calc.getOperand2().charAt(0) == '0')) {
                     calc.setOperand2(calc.getOperand2() + click);
-                    teInput.setText(calc.updateTEInput());
+                    tvInput.setText(calc.updateTVInput());
                 }
             }
-            teInput.setText(calc.updateTEInput());
+            tvInput.setText(calc.updateTVInput());
             //FOR TESTING
             System.out.println("Current click: " + click);
             System.out.println("Current operator: " + calc.getOperator());
             System.out.println("Operand1: " + calc.getOperand1());
             System.out.println("Operand2: " + calc.getOperand2());
-            System.out.println("Input bar: " + teInput.getText());
+            System.out.println("Input bar: " + tvInput.getText());
             System.out.println("Result: " + tvResult.getText());
             //END TEST
         }
@@ -107,7 +107,7 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public void onClick(View v) {
             calc.reset();
-            teInput.setText(calc.updateTEInput());
+            tvInput.setText(calc.updateTVInput());
             tvResult.setText("0");
         }
     };// end clearListener
@@ -131,12 +131,12 @@ public class MainActivity extends AppCompatActivity {
                     calc.setOperand2(calc.getOperand2().substring(0, calc.getOperand2().length() -1));
                 }
             }
-            teInput.setText(calc.updateTEInput());
+            tvInput.setText(calc.updateTVInput());
             //FOR TESTING
             System.out.println("Current operator: " + calc.getOperator());
             System.out.println("Operand1: " + calc.getOperand1());
             System.out.println("Operand2: " + calc.getOperand2());
-            System.out.println("Input bar: " + teInput.getText());
+            System.out.println("Input bar: " + tvInput.getText());
             System.out.println("Result: " + tvResult.getText());
             //END TEST
         }
@@ -161,12 +161,12 @@ public class MainActivity extends AppCompatActivity {
                     calc.setOperand2(calc.getOperand2().substring(1));
                 }
             }
-            teInput.setText(calc.updateTEInput());
+            tvInput.setText(calc.updateTVInput());
             //FOR TESTING
             System.out.println("Current operator: " + calc.getOperator());
             System.out.println("Operand1: " + calc.getOperand1());
             System.out.println("Operand2: " + calc.getOperand2());
-            System.out.println("Input bar: " + teInput.getText());
+            System.out.println("Input bar: " + tvInput.getText());
             System.out.println("Result: " + tvResult.getText());
             //END TEST
         }
@@ -194,6 +194,8 @@ public class MainActivity extends AppCompatActivity {
             else if (calc.getOperator().isEmpty()) {
                 //If the click is not =, update operator
                 if (!click.equals("\u003D")) {
+                    calc.setResult("0");
+                    calc.setOperand1("0");
                     calc.setOperator(click);
                 }
             }
@@ -201,8 +203,6 @@ public class MainActivity extends AppCompatActivity {
             else {
                 //If there are no operands
                 if(calc.getOperand1().isEmpty() && calc.getOperand2().isEmpty()) {
-                    calc.setResult("0");
-                    calc.setOperand1("0");
                     calc.setOperator(click);
                 }
                 //If there is just one operand
@@ -223,14 +223,14 @@ public class MainActivity extends AppCompatActivity {
                     }
                 }
             }
-            teInput.setText(calc.updateTEInput());
+            tvInput.setText(calc.updateTVInput());
             tvResult.setText(calc.getResult());
             //FOR TESTING
             System.out.println("Current click: " + click);
             System.out.println("Current operator: " + calc.getOperator());
             System.out.println("Operand1: " + calc.getOperand1());
             System.out.println("Operand2: " + calc.getOperand2());
-            System.out.println("Input bar: " + teInput.getText());
+            System.out.println("Input bar: " + tvInput.getText());
             System.out.println("Result: " + tvResult.getText());
             //END TEST
         }
@@ -261,12 +261,12 @@ public class MainActivity extends AppCompatActivity {
                     }
                 }
             }
-            teInput.setText(calc.updateTEInput());
+            tvInput.setText(calc.updateTVInput());
             //FOR TESTING
             System.out.println("Current operator: " + calc.getOperator());
             System.out.println("Operand1: " + calc.getOperand1());
             System.out.println("Operand2: " + calc.getOperand2());
-            System.out.println("Input bar: " + teInput.getText());
+            System.out.println("Input bar: " + tvInput.getText());
             System.out.println("Result: " + tvResult.getText());
             //END TEST
         }
@@ -276,7 +276,7 @@ public class MainActivity extends AppCompatActivity {
     private void clearError() {
         if (calc.checkError()) {
             calc.reset();
-            teInput.setText(calc.updateTEInput());
+            tvResult.setText(calc.updateTVInput());
             tvResult.setText(R.string.txt0);
         }
     }
@@ -284,7 +284,7 @@ public class MainActivity extends AppCompatActivity {
     private void clearAfterEquals() {
         if (calc.getOperator().equals("\u003D")) {
             calc.reset();
-            teInput.setText(calc.updateTEInput());
+            tvInput.setText(calc.updateTVInput());
             tvResult.setText(R.string.txt0);
         }
     }
