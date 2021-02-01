@@ -32,8 +32,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_margin="5dp"
-                android:layout_span="4"
-                android:inputType="text" />
+                android:layout_span="4" />
         </TableRow>
 
 
@@ -65,7 +64,8 @@
                 android:layout_margin="8dp"
                 android:background="@drawable/btn_lightgrey_round"
                 android:text="@string/txtClear"
-                android:textSize="30sp" />
+                android:textColor="@color/black"
+                android:textSize="36sp" />
 
             <android.widget.Button
                 android:id="@+id/btnBackspace"
@@ -74,7 +74,8 @@
                 android:layout_margin="8dp"
                 android:background="@drawable/btn_lightgrey_round"
                 android:text="@string/txtBackspace"
-                android:textSize="30sp" />
+                android:textColor="@color/black"
+                android:textSize="36sp" />
 
             <android.widget.Button
                 android:id="@+id/btnPosNeg"
@@ -83,7 +84,8 @@
                 android:layout_margin="8dp"
                 android:background="@drawable/btn_lightgrey_round"
                 android:text="@string/txtPosNeg"
-                android:textSize="30sp" />
+                android:textColor="@color/black"
+                android:textSize="36sp" />
 
             <android.widget.Button
                 android:id="@+id/btnDivide"
@@ -92,7 +94,7 @@
                 android:layout_margin="8dp"
                 android:background="@drawable/btn_orange_round"
                 android:text="@string/txtDivide"
-                android:textSize="30sp" />
+                android:textSize="36sp" />
         </TableRow>
 
         <TableRow
@@ -109,7 +111,7 @@
                 android:background="@drawable/btn_darkgrey_round"
                 android:text="@string/txt7"
                 android:textColor="@color/white"
-                android:textSize="30sp" />
+                android:textSize="36sp" />
 
             <android.widget.Button
                 android:id="@+id/btn8"
@@ -119,7 +121,7 @@
                 android:background="@drawable/btn_darkgrey_round"
                 android:text="@string/txt8"
                 android:textColor="@color/white"
-                android:textSize="30sp" />
+                android:textSize="36sp" />
 
             <android.widget.Button
                 android:id="@+id/btn9"
@@ -129,7 +131,7 @@
                 android:background="@drawable/btn_darkgrey_round"
                 android:text="@string/txt9"
                 android:textColor="@color/white"
-                android:textSize="30sp" />
+                android:textSize="36sp" />
 
             <android.widget.Button
                 android:id="@+id/btnMultiply"
@@ -138,7 +140,7 @@
                 android:layout_margin="8dp"
                 android:background="@drawable/btn_orange_round"
                 android:text="@string/txtMultiply"
-                android:textSize="30sp" />
+                android:textSize="36sp" />
         </TableRow>
 
         <TableRow
@@ -155,7 +157,7 @@
                 android:background="@drawable/btn_darkgrey_round"
                 android:text="@string/txt4"
                 android:textColor="@color/white"
-                android:textSize="30sp" />
+                android:textSize="36sp" />
 
             <android.widget.Button
                 android:id="@+id/btn5"
@@ -165,7 +167,7 @@
                 android:background="@drawable/btn_darkgrey_round"
                 android:text="@string/txt5"
                 android:textColor="@color/white"
-                android:textSize="30sp" />
+                android:textSize="36sp" />
 
             <android.widget.Button
                 android:id="@+id/btn6"
@@ -175,7 +177,7 @@
                 android:background="@drawable/btn_darkgrey_round"
                 android:text="@string/txt6"
                 android:textColor="@color/white"
-                android:textSize="30sp" />
+                android:textSize="36sp" />
 
             <android.widget.Button
                 android:id="@+id/btnSubtract"
@@ -184,7 +186,7 @@
                 android:layout_margin="8dp"
                 android:background="@drawable/btn_orange_round"
                 android:text="@string/txtSubtract"
-                android:textSize="30sp" />
+                android:textSize="36sp" />
 
         </TableRow>
 
@@ -202,7 +204,7 @@
                 android:background="@drawable/btn_darkgrey_round"
                 android:text="@string/txt1"
                 android:textColor="@color/white"
-                android:textSize="30sp" />
+                android:textSize="36sp" />
 
             <android.widget.Button
                 android:id="@+id/btn2"
@@ -212,7 +214,7 @@
                 android:background="@drawable/btn_darkgrey_round"
                 android:text="@string/txt2"
                 android:textColor="@color/white"
-                android:textSize="30sp" />
+                android:textSize="36sp" />
 
             <android.widget.Button
                 android:id="@+id/btn3"
@@ -222,7 +224,7 @@
                 android:background="@drawable/btn_darkgrey_round"
                 android:text="@string/txt3"
                 android:textColor="@color/white"
-                android:textSize="30sp" />
+                android:textSize="36sp" />
 
             <android.widget.Button
                 android:id="@+id/btnAdd"
@@ -231,7 +233,7 @@
                 android:layout_margin="8dp"
                 android:background="@drawable/btn_orange_round"
                 android:text="@string/txtAdd"
-                android:textSize="30sp" />
+                android:textSize="36sp" />
         </TableRow>
 
         <TableRow
@@ -250,7 +252,7 @@
                 android:text="@string/txt0"
                 android:textAlignment="center"
                 android:textColor="@color/white"
-                android:textSize="30sp" />
+                android:textSize="36sp" />
 
             <android.widget.Button
                 android:id="@+id/btnDecimal"
@@ -260,7 +262,7 @@
                 android:background="@drawable/btn_darkgrey_round"
                 android:text="@string/txtDecimal"
                 android:textColor="@color/white"
-                android:textSize="30sp" />
+                android:textSize="36sp" />
 
             <android.widget.Button
                 android:id="@+id/btnEquals"
@@ -269,7 +271,7 @@
                 android:layout_margin="8dp"
                 android:background="@drawable/btn_orange_round"
                 android:text="@string/txtEquals"
-                android:textSize="30sp" />
+                android:textSize="36sp" />
         </TableRow>
     </TableLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
