@@ -108,7 +108,7 @@ public class MainActivity extends AppCompatActivity {
         public void onClick(View v) {
             calc.reset();
             tvInput.setText(calc.updateTVInput());
-            tvResult.setText("0");
+            tvResult.setText(calc.getResult());
         }
     };// end clearListener
 
@@ -179,49 +179,47 @@ public class MainActivity extends AppCompatActivity {
             clearError();
             Button thisButton = findViewById(v.getId());
             String click = thisButton.getText().toString();
-            //If the current operator is =
-            if (calc.getOperator().equals("\u003D")) {
-                //If click is not =, update operator
+            //If operator variable is currently empty
+            if (calc.getOperator().isEmpty()) {
+                //If the click is not =
                 if (!click.equals("\u003D")) {
-                    calc.setOperator(click);
+                    if (calc.hasNoOperands()) {
+                        calc.setResult("0");
+                        calc.setOperand1("0");
+                        calc.setOperator(click);
+                    }
+                    else if (calc.hasOperand1()) {
+                        calc.setResult(calc.getOperand1());
+                        calc.setOperator(click);
+                    }
                 }
-                //Otherwise, clear after equals
-                else {
+            }
+            //If the operator variable is currently =
+            else if (calc.getOperator().equals("\u003D")) {
+                if (click.equals("\u003D")) {
                     clearAfterEquals();
                 }
-            }
-            //If operator is empty
-            else if (calc.getOperator().isEmpty()) {
-                //If the click is not =, update operator
-                if (!click.equals("\u003D")) {
-                    calc.setResult("0");
-                    calc.setOperand1("0");
-                    calc.setOperator(click);
-                }
-            }
-            //If the operator exists and is not =
-            else {
-                //If there are no operands
-                if(calc.getOperand1().isEmpty() && calc.getOperand2().isEmpty()) {
-                    calc.setOperator(click);
-                }
-                //If there is just one operand
-                else if (calc.getOperand2().equals("")) {
-                    //Trim decimal if at the end of operand1
-                    if (calc.getOperand1().charAt(calc.getOperand1().length()-1) == '.') {
-                        calc.setOperand1(calc.getOperand1().substring(0, calc.getOperand1().length()-1));
+                else {
+                    if (calc.hasNoOperands()) {
+                        calc.setResult("0");
+                        calc.setOperand1("0");
+                        calc.setOperator(click);
                     }
-                    calc.setResult(calc.getOperand1());
-                    calc.setOperator(click);
+                    else if (calc.hasOperand1()) {
+                        calc.setResult(calc.getOperand1());
+                        calc.setOperator(click);
+                    }
                 }
-                //If there are two operands
+            }
+            //If the operator exists and is not equals
+            else {
+                if (calc.hasOperand1()) {
+                    calc.setResult(calc.getOperand1());
+                }
                 else {
                     calc.calculate();
-                    //Trim decimal if at the end of result
-                    if (calc.getResult().charAt(calc.getResult().length()-1) == '.') {
-                        calc.setResult(calc.getResult().substring(0, calc.getResult().length()-1));
-                    }
                 }
+                calc.setOperator(click);
             }
             tvInput.setText(calc.updateTVInput());
             tvResult.setText(calc.getResult());
@@ -277,7 +275,7 @@ public class MainActivity extends AppCompatActivity {
         if (calc.checkError()) {
             calc.reset();
             tvResult.setText(calc.updateTVInput());
-            tvResult.setText(R.string.txt0);
+            tvResult.setText(calc.getResult());
         }
     }
 
@@ -285,7 +283,7 @@ public class MainActivity extends AppCompatActivity {
         if (calc.getOperator().equals("\u003D")) {
             calc.reset();
             tvInput.setText(calc.updateTVInput());
-            tvResult.setText(R.string.txt0);
+            tvResult.setText(calc.getResult());
         }
     }
 

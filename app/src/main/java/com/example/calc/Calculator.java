@@ -10,7 +10,7 @@ public class Calculator {
         this.operand1 = "";
         this.operand2 = "";
         this.operator = "";
-        this.result = "";
+        this.result = "0";
     }
     public String getOperand1() {return  operand1;}
     public String getOperand2() {return operand2;}
@@ -26,7 +26,7 @@ public class Calculator {
         this.operand1 = "";
         this.operand2 = "";
         this.operator = "";
-        this.result = "";
+        this.result = "0";
     }
 
     //Method that returns display string for EditText teInput
@@ -78,5 +78,12 @@ public class Calculator {
 
     public boolean checkError() {
         return result == "Cannot divide by 0" || result == "Error";
+    }
+
+    public boolean hasNoOperands() {
+        return operand1 == "" && operand2 == "";
+    }
+    public boolean hasOperand1() {
+        return operand1 != "" && operand2 == "";
     }
 }
