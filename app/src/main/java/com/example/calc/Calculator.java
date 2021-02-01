@@ -38,16 +38,34 @@ public class Calculator {
             switch (operator) {
                 case "\u002B":
                     result = String.valueOf(Double.parseDouble(operand1) + Double.parseDouble(operand2));
+                    System.out.println("Adding"); //TEST
+                    break;
                 case "\u2212":
                     result = String.valueOf(Double.parseDouble(operand1) - Double.parseDouble(operand2));
+                    System.out.println("Subtracting");
+                    break;
                 case "\u00D7":
                     result = String.valueOf(Double.parseDouble(operand1) * Double.parseDouble(operand2));
+                    System.out.println("Multiplying");
+                    break;
                 case "\u00F7":
-                    if (operand2.equals("0")) result = "Cannot divide by 0";
-                    else result = String.valueOf(Double.parseDouble(operand1) / Double.parseDouble(operand2));
+                    if (operand2.equals("0")) {
+                        result = "Cannot divide by 0";
+                    }
+                    else {
+                        result = String.valueOf(Double.parseDouble(operand1) / Double.parseDouble(operand2));
+                        System.out.println("Dividing");
+                    }
+                    break;
             }
         }
-        else result = "Error";
+        else {
+            result = "Error";
+        }
+        //Remove trailing 0 from float value if result is an integer.
+        if (result.charAt(result.length() - 1) == '0' && result.charAt(result.length() - 2) == '.') {
+            result = result.substring(0, result.length() - 2);
+        }
         operand1 = result;
         operand2 = "";
     }

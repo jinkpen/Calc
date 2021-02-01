@@ -90,6 +90,7 @@ public class MainActivity extends AppCompatActivity {
                     teInput.setText(calc.updateTEInput());
                 }
             }
+            teInput.setText(calc.updateTEInput());
             //FOR TESTING
             System.out.println("Current click: " + click);
             System.out.println("Current operator: " + calc.getOperator());
