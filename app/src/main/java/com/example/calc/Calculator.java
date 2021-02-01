@@ -33,7 +33,7 @@ public class Calculator {
     public String updateTEInput() {return operator + "   " + operand2;}
 
     //Method to perform simple calculations
-    public void calculate (String operand1, String operand2, String operator){
+    public void calculate (){
         if (!operator.isEmpty() && !operand2.isEmpty()) {
             switch (operator) {
                 case "\u002B":
@@ -48,5 +48,11 @@ public class Calculator {
             }
         }
         else result = "Error";
+        operand1 = result;
+        operand2 = "";
+    }
+
+    public boolean checkError() {
+        return result == "Cannot divide by 0" || result == "Error";
     }
 }
