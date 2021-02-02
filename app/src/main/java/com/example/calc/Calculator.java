@@ -89,7 +89,7 @@ public class Calculator {
     public void posNegToggle() {
         if (operator.isEmpty()) {
             if (!operand1.isEmpty()) {
-                if (!operand1.equals("0") && !operand1.contains("-")) {
+                if (!operand1.equals("0") && !operand1.equals("0.") && !operand1.contains("-")) {
                     operand1 = "-" + operand1;
                 } else {
                     operand1 = operand1.substring(1);
@@ -98,7 +98,7 @@ public class Calculator {
         }
         else {
             if (!operand2.isEmpty()) {
-                if (!operand2.isEmpty() && !operand2.equals("0") && !operand2.contains("-")) {
+                if (!operand2.equals("0") && !operand2.equals("0.") && !operand2.contains("-")) {
                     operand2 = "-" + operand2;
                 } else {
                     operand2 = operand2.substring(1);
