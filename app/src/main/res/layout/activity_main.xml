@@ -53,7 +53,6 @@
                 android:layout_margin="5dp"
                 android:layout_span="4"
                 android:gravity="bottom|end"
-                android:maxLength="1"
                 android:paddingStart="5dp"
                 android:paddingEnd="5dp"
                 android:text="@string/txt0"

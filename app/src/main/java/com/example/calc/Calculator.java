@@ -42,7 +42,8 @@ public class Calculator {
 
     //Method to trim result
     public String trimResult(String str) {
-        if (!str.isEmpty() && str.charAt(str.length()-1) == '.') {
+        if ((!str.isEmpty()) && (str.charAt(str.length()-1) == '.')) {
+            System.out.println("FUCK");
             str = str.substring(0, str.length()-1);
         }
         return str;
@@ -135,12 +136,15 @@ public class Calculator {
             switch (operator) {
                 case "\u002B":
                     result = String.valueOf(Double.parseDouble(operand1) + Double.parseDouble(operand2));
+                    System.out.println("Result in +: " + result);
                     break;
                 case "\u2212":
                     result = String.valueOf(Double.parseDouble(operand1) - Double.parseDouble(operand2));
+                    System.out.println("Result in -: " + result);
                     break;
                 case "\u00D7":
                     result = String.valueOf(Double.parseDouble(operand1) * Double.parseDouble(operand2));
+                    System.out.println("Result in : " + result);
                     break;
                 case "\u00F7":
                     if (operand2.equals("0")) {
@@ -148,6 +152,7 @@ public class Calculator {
                     }
                     else {
                         result = String.valueOf(Double.parseDouble(operand1) / Double.parseDouble(operand2));
+                        System.out.println("Result in *: " + result);
                     }
                     break;
             }
@@ -158,6 +163,7 @@ public class Calculator {
         //Remove trailing 0 from float value if result is an integer.
         if (result.charAt(result.length() - 1) == '0' && result.charAt(result.length() - 2) == '.') {
             result = result.substring(0, result.length() - 2);
+            System.out.println("YO");
         }
         operand1 = result;
         operand2 = "";
@@ -199,6 +205,7 @@ public class Calculator {
                 result = trimResult(operand1);
             }
             else {
+                System.out.println("Calling calculate()");
                 calculate();
             }
             operator = click;
