@@ -88,19 +88,21 @@ public class Calculator {
     //Method to toggle input's positive/negative
     public void posNegToggle() {
         if (operator.isEmpty()) {
-            if (!operand1.isEmpty() && !operand1.equals("0") && !operand1.contains("-")) {
-                operand1 = "-" + operand1;
-            }
-            else {
-                operand1 = operand1.substring(1);
+            if (!operand1.isEmpty()) {
+                if (!operand1.equals("0") && !operand1.contains("-")) {
+                    operand1 = "-" + operand1;
+                } else {
+                    operand1 = operand1.substring(1);
+                }
             }
         }
         else {
-            if (!operand2.isEmpty() && !operand2.equals("0") && !operand2.contains("-")) {
-                operand2 = "-" + operand2;
-            }
-            else {
-                operand2 = operand2.substring(1);
+            if (!operand2.isEmpty()) {
+                if (!operand2.isEmpty() && !operand2.equals("0") && !operand2.contains("-")) {
+                    operand2 = "-" + operand2;
+                } else {
+                    operand2 = operand2.substring(1);
+                }
             }
         }
     }//end posNegToggle method
