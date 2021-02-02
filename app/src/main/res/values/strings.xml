@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Calc</string>
+    <string name="app_name">iPhoney Calculator</string>
     <string name="txtClear">AC</string>
     <string name="txtBackspace">\u232B</string>
     <string name="txtPosNeg">\u207A\u2215\u208B</string>
