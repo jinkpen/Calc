@@ -21,12 +21,14 @@ public class Calculator {
     public void setOperator(String operator){this.operator = operator;}
     public void setResult(String result){this.result = result;}
 
-    //Method that resets calculator values to empty strings
-    public void reset() {
-        this.operand1 = "";
-        this.operand2 = "";
-        this.operator = "";
-        this.result = "0";
+    public boolean hasNoOperands() {
+        return operand1 == "" && operand2 == "";
+    }
+    public boolean hasOperand1() {
+        return operand1 != "" && operand2 == "";
+    }
+    public boolean checkError() {
+        return result == "Cannot divide by 0" || result == "Error";
     }
 
     //Method that returns display string for EditText teInput
@@ -38,8 +40,95 @@ public class Calculator {
         }
     }
 
+    //Method to trim result
+    public String trimResult(String str) {
+        if (!str.isEmpty() && str.charAt(str.length()-1) == '.') {
+            str = str.substring(0, str.length()-1);
+        }
+        return str;
+    }
+
+    //Method that processes number button clicks
+    public void number(String click) {
+        if (operator.isEmpty()) {
+            if (!(operand1.length() == 1 && operand1.charAt(0) == '0')) {
+                operand1 += click;
+            }
+        }
+        else {
+            if (!(operand2.length() == 1 && operand2.charAt(0) == '0')) {
+                operand2 += click;
+            }
+        }
+    }
+
+    //Method that resets calculator values
+    public void reset() {
+        this.operand1 = "";
+        this.operand2 = "";
+        this.operator = "";
+        this.result = "0";
+    }
+
+    //Method to remove character from operands
+    public void backspace() {
+        if (operator.equals("")) {
+            if (operand1.length() > 0) {
+                operand1 = operand1.substring(0, operand1.length()-1);
+            }
+        }
+        else {
+            if (operand2.length() > 0) {
+                operand2 = operand2.substring(0, operand2.length()-1);
+            }
+        }
+    }
+
+    //Method to toggle input's positive/negative
+    public void posNegToggle() {
+        if (operator.isEmpty()) {
+            if (!operand1.isEmpty() && !operand1.equals("0") && !operand1.contains("-")) {
+                operand1 = "-" + operand1;
+            }
+            else {
+                operand1 = operand1.substring(1);
+            }
+        }
+        else {
+            if (!operand2.isEmpty() && !operand2.equals("0") && !operand2.contains("-")) {
+                operand2 = "-" + operand2;
+            }
+            else {
+                operand2 = operand2.substring(1);
+            }
+        }
+    }
+
+    public void decimal() {
+        if (operator.isEmpty()) {
+            if (!operand1.contains(".")) {
+                if (operand1.length() > 0) {
+                    operand1 += ".";
+                }
+                else {
+                    operand1 += "0.";
+                }
+            }
+        }
+        else {
+            if (!operand2.contains(".")) {
+                if (operand2.length() > 0) {
+                    operand2 = operand2 + ".";
+                }
+                else {
+                    operand2 = operand2 + "0.";
+                }
+            }
+        }
+    }
+
     //Method to perform simple calculations
-    public void calculate (){
+    public void calculate() {
         if (!operator.isEmpty() && !operand2.isEmpty()) {
             switch (operator) {
                 case "\u002B":
@@ -74,16 +163,49 @@ public class Calculator {
         }
         operand1 = result;
         operand2 = "";
+    }//end calculate
+
+    //Method to perform operation when operator is clicked
+    public void operation(String click) {
+        if (operator.isEmpty()) {
+            if (!click.equals(R.string.txtEquals)) {
+                if (hasNoOperands()) {
+                    result = "0";
+                    operand1 = "0";
+                    operator = click;
+                }
+                else if (hasOperand1()) {
+                    result = trimResult(operand1);
+                    operator = click;
+                }
+            }
+        }
+        else if (operator.equals("\u003D")) {
+            if (click.equals("\u003D")) {
+                reset();
+            }
+            else {
+                if (hasNoOperands()) {
+                    result = "0";
+                    operand1 = "0";
+                    operator = click;
+                }
+                else if (hasOperand1()) {
+                    result = trimResult(operand1);
+                    operator = click;
+                }
+            }
+        }
+        else {
+            if (hasOperand1()) {
+                result = trimResult(operand1);
+            }
+            else {
+                calculate();
+            }
+            operator = click;
+        }
     }
 
-    public boolean checkError() {
-        return result == "Cannot divide by 0" || result == "Error";
-    }
 
-    public boolean hasNoOperands() {
-        return operand1 == "" && operand2 == "";
-    }
-    public boolean hasOperand1() {
-        return operand1 != "" && operand2 == "";
-    }
 }

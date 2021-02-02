@@ -5,12 +5,10 @@ import android.os.Bundle;
 import android.widget.*;
 import android.view.View;
 
-
 public class MainActivity extends AppCompatActivity {
     private TextView tvInput;
     private TextView tvResult;
     Calculator calc = new Calculator();
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,21 +73,7 @@ public class MainActivity extends AppCompatActivity {
             clearAfterEquals();
             Button thisButton = findViewById(v.getId());
             String click = thisButton.getText().toString();
-            //If there is no operator
-            if (calc.getOperator().isEmpty()) {
-                //If 0 is not the only element in operand1, append click to operand1
-                if (!(calc.getOperand1().length() == 1 && calc.getOperand1().charAt(0) == '0')) {
-                        calc.setOperand1(calc.getOperand1() + click);
-                        tvInput.setText(calc.updateTVInput());
-                }
-            }
-            else {
-                //If 0 is not the only element in operand2, append click to operand2
-                if (!(calc.getOperand2().length() == 1 && calc.getOperand2().charAt(0) == '0')) {
-                    calc.setOperand2(calc.getOperand2() + click);
-                    tvInput.setText(calc.updateTVInput());
-                }
-            }
+            calc.number(click);
             tvInput.setText(calc.updateTVInput());
             //FOR TESTING
             System.out.println("Current click: " + click);
@@ -118,19 +102,7 @@ public class MainActivity extends AppCompatActivity {
         public void onClick(View v) {
             clearError();
             clearAfterEquals();
-            //If there is no operator
-            if (calc.getOperator().isEmpty()) {
-                //If operand1 is longer than 0, remove last element
-                if (calc.getOperand1().length() > 0) {
-                    calc.setOperand1(calc.getOperand1().substring(0, calc.getOperand1().length() - 1));
-                }
-            }
-            else {
-                // If operand2 is longer than 0, remove last element
-                if (calc.getOperand2().length() > 0) {
-                    calc.setOperand2(calc.getOperand2().substring(0, calc.getOperand2().length() -1));
-                }
-            }
+            calc.backspace();
             tvInput.setText(calc.updateTVInput());
             //FOR TESTING
             System.out.println("Current operator: " + calc.getOperator());
@@ -148,19 +120,7 @@ public class MainActivity extends AppCompatActivity {
         public void onClick(View v) {
             clearError();
             clearAfterEquals();
-            if (calc.getOperator().isEmpty()) {
-                if (calc.getOperand1().contains("-")) {
-                    calc.setOperand1(calc.getOperand1().substring(1));
-                }
-                else {
-                    calc.setOperand1("-" + calc.getOperand1());
-                }
-            }
-            else {
-                if (calc.getOperand2().contains("-")) {
-                    calc.setOperand2(calc.getOperand2().substring(1));
-                }
-            }
+            calc.posNegToggle();
             tvInput.setText(calc.updateTVInput());
             //FOR TESTING
             System.out.println("Current operator: " + calc.getOperator());
@@ -179,48 +139,7 @@ public class MainActivity extends AppCompatActivity {
             clearError();
             Button thisButton = findViewById(v.getId());
             String click = thisButton.getText().toString();
-            //If operator variable is currently empty
-            if (calc.getOperator().isEmpty()) {
-                //If the click is not =
-                if (!click.equals("\u003D")) {
-                    if (calc.hasNoOperands()) {
-                        calc.setResult("0");
-                        calc.setOperand1("0");
-                        calc.setOperator(click);
-                    }
-                    else if (calc.hasOperand1()) {
-                        calc.setResult(calc.getOperand1());
-                        calc.setOperator(click);
-                    }
-                }
-            }
-            //If the operator variable is currently =
-            else if (calc.getOperator().equals("\u003D")) {
-                if (click.equals("\u003D")) {
-                    clearAfterEquals();
-                }
-                else {
-                    if (calc.hasNoOperands()) {
-                        calc.setResult("0");
-                        calc.setOperand1("0");
-                        calc.setOperator(click);
-                    }
-                    else if (calc.hasOperand1()) {
-                        calc.setResult(calc.getOperand1());
-                        calc.setOperator(click);
-                    }
-                }
-            }
-            //If the operator exists and is not equals
-            else {
-                if (calc.hasOperand1()) {
-                    calc.setResult(calc.getOperand1());
-                }
-                else {
-                    calc.calculate();
-                }
-                calc.setOperator(click);
-            }
+            calc.operation(click);
             tvInput.setText(calc.updateTVInput());
             tvResult.setText(calc.getResult());
             //FOR TESTING
@@ -239,26 +158,7 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public void onClick(View v) {
             clearError();
-            if (calc.getOperator().isEmpty()) {
-                if (!calc.getOperand1().contains(".")) {
-                    if (calc.getOperand1().length() > 0) {
-                        calc.setOperand1(calc.getOperand1() + ".");
-                    }
-                    else {
-                        calc.setOperand1(calc.getOperand1() + "0.");
-                    }
-                }
-            }
-            else {
-                if (!calc.getOperand2().contains(".")) {
-                    if (calc.getOperand2().length() > 0) {
-                        calc.setOperand2(calc.getOperand2() + ".");
-                    }
-                    else {
-                        calc.setOperand2(calc.getOperand2() + "0.");
-                    }
-                }
-            }
+            calc.decimal();
             tvInput.setText(calc.updateTVInput());
             //FOR TESTING
             System.out.println("Current operator: " + calc.getOperator());
@@ -279,6 +179,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    //Method to reset calculator and display
     private void clearAfterEquals() {
         if (calc.getOperator().equals("\u003D")) {
             calc.reset();
