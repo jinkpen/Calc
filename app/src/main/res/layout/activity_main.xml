@@ -29,10 +29,14 @@
 
             <TextView
                 android:id="@+id/tvInput"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_margin="5dp"
-                android:layout_span="4" />
+                android:layout_span="4"
+                android:paddingStart="5dp"
+                android:paddingEnd="5dp"
+                android:textColor="@color/light_grey"
+                android:textSize="24sp" />
         </TableRow>
 
 
@@ -48,7 +52,13 @@
                 android:layout_height="match_parent"
                 android:layout_margin="5dp"
                 android:layout_span="4"
-                android:text="@string/txt0" />
+                android:gravity="bottom|end"
+                android:maxLength="1"
+                android:paddingStart="5dp"
+                android:paddingEnd="5dp"
+                android:text="@string/txt0"
+                android:textColor="@color/white"
+                android:textSize="48sp" />
         </TableRow>
 
         <TableRow
@@ -65,7 +75,7 @@
                 android:background="@drawable/btn_lightgrey_round"
                 android:text="@string/txtClear"
                 android:textColor="@color/black"
-                android:textSize="36sp" />
+                android:textSize="30sp" />
 
             <android.widget.Button
                 android:id="@+id/btnBackspace"
@@ -111,7 +121,7 @@
                 android:background="@drawable/btn_darkgrey_round"
                 android:text="@string/txt7"
                 android:textColor="@color/white"
-                android:textSize="36sp" />
+                android:textSize="30sp" />
 
             <android.widget.Button
                 android:id="@+id/btn8"
@@ -121,7 +131,7 @@
                 android:background="@drawable/btn_darkgrey_round"
                 android:text="@string/txt8"
                 android:textColor="@color/white"
-                android:textSize="36sp" />
+                android:textSize="30sp" />
 
             <android.widget.Button
                 android:id="@+id/btn9"
@@ -131,7 +141,7 @@
                 android:background="@drawable/btn_darkgrey_round"
                 android:text="@string/txt9"
                 android:textColor="@color/white"
-                android:textSize="36sp" />
+                android:textSize="30sp" />
 
             <android.widget.Button
                 android:id="@+id/btnMultiply"
@@ -157,7 +167,7 @@
                 android:background="@drawable/btn_darkgrey_round"
                 android:text="@string/txt4"
                 android:textColor="@color/white"
-                android:textSize="36sp" />
+                android:textSize="30sp" />
 
             <android.widget.Button
                 android:id="@+id/btn5"
@@ -167,7 +177,7 @@
                 android:background="@drawable/btn_darkgrey_round"
                 android:text="@string/txt5"
                 android:textColor="@color/white"
-                android:textSize="36sp" />
+                android:textSize="30sp" />
 
             <android.widget.Button
                 android:id="@+id/btn6"
@@ -177,7 +187,7 @@
                 android:background="@drawable/btn_darkgrey_round"
                 android:text="@string/txt6"
                 android:textColor="@color/white"
-                android:textSize="36sp" />
+                android:textSize="30sp" />
 
             <android.widget.Button
                 android:id="@+id/btnSubtract"
@@ -204,7 +214,7 @@
                 android:background="@drawable/btn_darkgrey_round"
                 android:text="@string/txt1"
                 android:textColor="@color/white"
-                android:textSize="36sp" />
+                android:textSize="30sp" />
 
             <android.widget.Button
                 android:id="@+id/btn2"
@@ -214,7 +224,7 @@
                 android:background="@drawable/btn_darkgrey_round"
                 android:text="@string/txt2"
                 android:textColor="@color/white"
-                android:textSize="36sp" />
+                android:textSize="30sp" />
 
             <android.widget.Button
                 android:id="@+id/btn3"
@@ -224,7 +234,7 @@
                 android:background="@drawable/btn_darkgrey_round"
                 android:text="@string/txt3"
                 android:textColor="@color/white"
-                android:textSize="36sp" />
+                android:textSize="30sp" />
 
             <android.widget.Button
                 android:id="@+id/btnAdd"
@@ -252,7 +262,7 @@
                 android:text="@string/txt0"
                 android:textAlignment="center"
                 android:textColor="@color/white"
-                android:textSize="36sp" />
+                android:textSize="30sp" />
 
             <android.widget.Button
                 android:id="@+id/btnDecimal"

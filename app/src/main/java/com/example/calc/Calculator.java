@@ -102,7 +102,7 @@ public class Calculator {
                 operand2 = operand2.substring(1);
             }
         }
-    }
+    }//end posNegToggle method
 
     public void decimal() {
         if (operator.isEmpty()) {
@@ -125,7 +125,7 @@ public class Calculator {
                 }
             }
         }
-    }
+    }// end decimal method
 
     //Method to perform simple calculations
     public void calculate() {
@@ -133,15 +133,12 @@ public class Calculator {
             switch (operator) {
                 case "\u002B":
                     result = String.valueOf(Double.parseDouble(operand1) + Double.parseDouble(operand2));
-                    System.out.println("Adding"); //TEST
                     break;
                 case "\u2212":
                     result = String.valueOf(Double.parseDouble(operand1) - Double.parseDouble(operand2));
-                    System.out.println("Subtracting");
                     break;
                 case "\u00D7":
                     result = String.valueOf(Double.parseDouble(operand1) * Double.parseDouble(operand2));
-                    System.out.println("Multiplying");
                     break;
                 case "\u00F7":
                     if (operand2.equals("0")) {
@@ -149,7 +146,6 @@ public class Calculator {
                     }
                     else {
                         result = String.valueOf(Double.parseDouble(operand1) / Double.parseDouble(operand2));
-                        System.out.println("Dividing");
                     }
                     break;
             }
@@ -163,7 +159,7 @@ public class Calculator {
         }
         operand1 = result;
         operand2 = "";
-    }//end calculate
+    }//end calculate method
 
     //Method to perform operation when operator is clicked
     public void operation(String click) {
@@ -205,7 +201,6 @@ public class Calculator {
             }
             operator = click;
         }
-    }
+    }//end operation method
 
-
-}
+}//end Class
