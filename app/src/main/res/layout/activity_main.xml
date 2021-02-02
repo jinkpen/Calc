@@ -50,16 +50,16 @@
             <TextView
                 android:id="@+id/tvResult"
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_margin="5dp"
                 android:layout_span="4"
                 android:gravity="bottom|end"
+                android:lines="2"
                 android:paddingStart="8dp"
                 android:paddingEnd="8dp"
-                android:lines="2"
                 android:text="@string/txt0"
                 android:textColor="@color/white"
-                android:textSize="40sp" />
+                android:textSize="42sp" />
         </TableRow>
 
         <TableRow
@@ -73,7 +73,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="fill_parent"
                 android:layout_margin="8dp"
-                android:background="@drawable/btn_lightgrey_round"
+                android:background="@drawable/btn_lightgrey"
                 android:text="@string/txtClear"
                 android:textColor="@color/black"
                 android:textSize="30sp" />
@@ -83,7 +83,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="fill_parent"
                 android:layout_margin="8dp"
-                android:background="@drawable/btn_lightgrey_round"
+                android:background="@drawable/btn_lightgrey"
                 android:text="@string/txtBackspace"
                 android:textColor="@color/black"
                 android:textSize="36sp" />
@@ -93,7 +93,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="fill_parent"
                 android:layout_margin="8dp"
-                android:background="@drawable/btn_lightgrey_round"
+                android:background="@drawable/btn_lightgrey"
                 android:text="@string/txtPosNeg"
                 android:textColor="@color/black"
                 android:textSize="36sp" />
@@ -103,7 +103,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="fill_parent"
                 android:layout_margin="8dp"
-                android:background="@drawable/btn_orange_round"
+                android:background="@drawable/btn_orange"
                 android:text="@string/txtDivide"
                 android:textSize="40sp" />
         </TableRow>
@@ -119,7 +119,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="fill_parent"
                 android:layout_margin="8dp"
-                android:background="@drawable/btn_darkgrey_round"
+                android:background="@drawable/btn_darkgrey"
                 android:text="@string/txt7"
                 android:textColor="@color/white"
                 android:textSize="36sp" />
@@ -129,7 +129,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="fill_parent"
                 android:layout_margin="8dp"
-                android:background="@drawable/btn_darkgrey_round"
+                android:background="@drawable/btn_darkgrey"
                 android:text="@string/txt8"
                 android:textColor="@color/white"
                 android:textSize="36sp" />
@@ -139,7 +139,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="fill_parent"
                 android:layout_margin="8dp"
-                android:background="@drawable/btn_darkgrey_round"
+                android:background="@drawable/btn_darkgrey"
                 android:text="@string/txt9"
                 android:textColor="@color/white"
                 android:textSize="36sp" />
@@ -149,7 +149,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="fill_parent"
                 android:layout_margin="8dp"
-                android:background="@drawable/btn_orange_round"
+                android:background="@drawable/btn_orange"
                 android:text="@string/txtMultiply"
                 android:textSize="40sp" />
         </TableRow>
@@ -165,7 +165,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="fill_parent"
                 android:layout_margin="8dp"
-                android:background="@drawable/btn_darkgrey_round"
+                android:background="@drawable/btn_darkgrey"
                 android:text="@string/txt4"
                 android:textColor="@color/white"
                 android:textSize="36sp" />
@@ -175,7 +175,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="fill_parent"
                 android:layout_margin="8dp"
-                android:background="@drawable/btn_darkgrey_round"
+                android:background="@drawable/btn_darkgrey"
                 android:text="@string/txt5"
                 android:textColor="@color/white"
                 android:textSize="36sp" />
@@ -185,7 +185,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="fill_parent"
                 android:layout_margin="8dp"
-                android:background="@drawable/btn_darkgrey_round"
+                android:background="@drawable/btn_darkgrey"
                 android:text="@string/txt6"
                 android:textColor="@color/white"
                 android:textSize="36sp" />
@@ -195,7 +195,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="fill_parent"
                 android:layout_margin="8dp"
-                android:background="@drawable/btn_orange_round"
+                android:background="@drawable/btn_orange"
                 android:text="@string/txtSubtract"
                 android:textSize="40sp" />
 
@@ -212,7 +212,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="fill_parent"
                 android:layout_margin="8dp"
-                android:background="@drawable/btn_darkgrey_round"
+                android:background="@drawable/btn_darkgrey"
                 android:text="@string/txt1"
                 android:textColor="@color/white"
                 android:textSize="36sp" />
@@ -222,7 +222,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="fill_parent"
                 android:layout_margin="8dp"
-                android:background="@drawable/btn_darkgrey_round"
+                android:background="@drawable/btn_darkgrey"
                 android:text="@string/txt2"
                 android:textColor="@color/white"
                 android:textSize="36sp" />
@@ -232,7 +232,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="fill_parent"
                 android:layout_margin="8dp"
-                android:background="@drawable/btn_darkgrey_round"
+                android:background="@drawable/btn_darkgrey"
                 android:text="@string/txt3"
                 android:textColor="@color/white"
                 android:textSize="36sp" />
@@ -242,7 +242,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="fill_parent"
                 android:layout_margin="8dp"
-                android:background="@drawable/btn_orange_round"
+                android:background="@drawable/btn_orange"
                 android:text="@string/txtAdd"
                 android:textSize="40sp" />
         </TableRow>
@@ -259,7 +259,7 @@
                 android:layout_height="fill_parent"
                 android:layout_margin="8dp"
                 android:layout_span="2"
-                android:background="@drawable/btn_darkgrey_oval"
+                android:background="@drawable/btn_darkgrey2"
                 android:text="@string/txt0"
 
                 android:textColor="@color/white"
@@ -270,7 +270,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="fill_parent"
                 android:layout_margin="8dp"
-                android:background="@drawable/btn_darkgrey_round"
+                android:background="@drawable/btn_darkgrey"
                 android:text="@string/txtDecimal"
                 android:textColor="@color/white"
                 android:textSize="36sp" />
@@ -280,7 +280,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="fill_parent"
                 android:layout_margin="8dp"
-                android:background="@drawable/btn_orange_round"
+                android:background="@drawable/btn_orange"
                 android:text="@string/txtEquals"
                 android:textSize="40sp" />
         </TableRow>
