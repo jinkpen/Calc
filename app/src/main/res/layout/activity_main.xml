@@ -33,10 +33,11 @@
                 android:layout_height="match_parent"
                 android:layout_margin="5dp"
                 android:layout_span="4"
-                android:paddingStart="5dp"
-                android:paddingEnd="5dp"
+                android:paddingStart="8dp"
+                android:paddingEnd="8dp"
+                android:maxLength="34"
                 android:textColor="@color/light_grey"
-                android:textSize="24sp" />
+                android:textSize="20sp" />
         </TableRow>
 
 
@@ -53,11 +54,12 @@
                 android:layout_margin="5dp"
                 android:layout_span="4"
                 android:gravity="bottom|end"
-                android:paddingStart="5dp"
-                android:paddingEnd="5dp"
+                android:paddingStart="8dp"
+                android:paddingEnd="8dp"
+                android:lines="2"
                 android:text="@string/txt0"
                 android:textColor="@color/white"
-                android:textSize="48sp" />
+                android:textSize="40sp" />
         </TableRow>
 
         <TableRow
