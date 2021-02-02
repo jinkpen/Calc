@@ -17,6 +17,6 @@
     <string name="txt3">3</string>
     <string name="txtAdd">\u002B</string>
     <string name="txt0">0</string>
-    <string name="txtDecimal">\u002E</string>
+    <string name="txtDecimal">.</string>
     <string name="txtEquals">\u003D</string>
 </resources>

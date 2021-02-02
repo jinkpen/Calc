@@ -9,6 +9,10 @@ public class MainActivity extends AppCompatActivity {
     private TextView tvInput;
     private TextView tvResult;
     Calculator calc = new Calculator();
+    private String operand1 = "";
+    private String operand2 = "";
+    private String operator = "";
+    private String result = "0";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,13 +77,28 @@ public class MainActivity extends AppCompatActivity {
             clearAfterEquals();
             Button thisButton = findViewById(v.getId());
             String click = thisButton.getText().toString();
-            calc.number(click);
-            tvInput.setText(calc.updateTVInput());
+            if (operator.isEmpty()) {
+                if (!(operand1.length() == 1 && operand1.charAt(0) == '0')) {
+                    operand1 += click;
+                }
+            }
+            else {
+                if (!(operand2.length() == 1 && operand2.charAt(0) == '0')) {
+                    operand2 += click;
+                }
+            }
+
+
+
+
+
+            //calc.number(click);
+            tvInput.setText(updateTVInput());
             //FOR TESTING
             System.out.println("Current click: " + click);
-            System.out.println("Current operator: " + calc.getOperator());
-            System.out.println("Operand1: " + calc.getOperand1());
-            System.out.println("Operand2: " + calc.getOperand2());
+            System.out.println("Current operator: " + operator);
+            System.out.println("Operand1: " + operand1);
+            System.out.println("Operand2: " + operand2);
             System.out.println("Input bar: " + tvInput.getText());
             System.out.println("Result: " + tvResult.getText());
             //END TEST
@@ -90,9 +109,9 @@ public class MainActivity extends AppCompatActivity {
     View.OnClickListener clearListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            calc.reset();
-            tvInput.setText(calc.updateTVInput());
-            tvResult.setText(calc.getResult());
+            reset();
+            tvInput.setText(updateTVInput());
+            tvResult.setText(result);
         }
     };// end clearListener
 
@@ -102,12 +121,21 @@ public class MainActivity extends AppCompatActivity {
         public void onClick(View v) {
             clearError();
             clearAfterEquals();
-            calc.backspace();
-            tvInput.setText(calc.updateTVInput());
+            if (operator.isEmpty()) {
+                if (operand1.length() > 0) {
+                    operand1 = operand1.substring(0, operand1.length()-1);
+                }
+            }
+            else {
+                if (operand2.length() > 0) {
+                    operand2 = operand2.substring(0, operand2.length()-1);
+                }
+            }
+            tvInput.setText(updateTVInput());
             //FOR TESTING
-            System.out.println("Current operator: " + calc.getOperator());
-            System.out.println("Operand1: " + calc.getOperand1());
-            System.out.println("Operand2: " + calc.getOperand2());
+            System.out.println("Current operator: " + operator);
+            System.out.println("Operand1: " + operand1);
+            System.out.println("Operand2: " + operand2);
             System.out.println("Input bar: " + tvInput.getText());
             System.out.println("Result: " + tvResult.getText());
             //END TEST
@@ -120,12 +148,31 @@ public class MainActivity extends AppCompatActivity {
         public void onClick(View v) {
             clearError();
             clearAfterEquals();
-            calc.posNegToggle();
-            tvInput.setText(calc.updateTVInput());
+            if (operator.isEmpty()) {
+                if (!operand1.isEmpty()) {
+                    if (!operand1.equals("0") && !operand1.equals("0.") && !operand1.contains("-")) {
+                        operand1 = "-" + operand1;
+                    } else {
+                        operand1 = operand1.substring(1);
+                    }
+                }
+            }
+            else {
+                if (!operand2.isEmpty()) {
+                    if (!operand2.equals("0") && !operand2.equals("0.") && !operand2.contains("-")) {
+                        operand2 = "-" + operand2;
+                    } else {
+                        operand2 = operand2.substring(1);
+                    }
+                }
+            }
+
+            //calc.posNegToggle();
+            tvInput.setText(updateTVInput());
             //FOR TESTING
-            System.out.println("Current operator: " + calc.getOperator());
-            System.out.println("Operand1: " + calc.getOperand1());
-            System.out.println("Operand2: " + calc.getOperand2());
+            System.out.println("Current operator: " + operator);
+            System.out.println("Operand1: " + operand1);
+            System.out.println("Operand2: " + operand2);
             System.out.println("Input bar: " + tvInput.getText());
             System.out.println("Result: " + tvResult.getText());
             //END TEST
@@ -139,14 +186,55 @@ public class MainActivity extends AppCompatActivity {
             clearError();
             Button thisButton = findViewById(v.getId());
             String click = thisButton.getText().toString();
-            calc.operation(click);
-            tvInput.setText(calc.updateTVInput());
-            tvResult.setText(calc.getResult());
+            if (operator.isEmpty()) {
+                if (!click.equals(R.string.txtEquals)) {
+                    if (hasNoOperands()) {
+                        result = "0";
+                        operand1 = "0";
+                        operator = click;
+                    }
+                    else if (hasOperand1()) {
+                        result = trimResult(operand1);
+                        operator = click;
+                    }
+                }
+            }
+            else if (operator.equals(R.string.txtEquals)) {
+                if (click.equals(R.string.txtEquals)) {
+                    reset();
+                }
+                else {
+                    if (hasNoOperands()) {
+                        result = "0";
+                        operand1 = "0";
+                        operator = click;
+                    }
+                    else if (hasOperand1()) {
+                        result = trimResult(operand1);
+                        operator = click;
+                    }
+                }
+            }
+            else {
+                if (hasOperand1()) {
+                    result = trimResult(operand1);
+                }
+                else {
+                    System.out.println("Calling calculate()");
+                    result = calc.equals(operator, operand1, operand2);
+                    operand1 = result;
+                    operand2 = "";
+                }
+                operator = click;
+            }
+            //calc.operation(click);
+            tvInput.setText(updateTVInput());
+            tvResult.setText(result);
             //FOR TESTING
             System.out.println("Current click: " + click);
-            System.out.println("Current operator: " + calc.getOperator());
-            System.out.println("Operand1: " + calc.getOperand1());
-            System.out.println("Operand2: " + calc.getOperand2());
+            System.out.println("Current operator: " + operator);
+            System.out.println("Operand1: " + operand1);
+            System.out.println("Operand2: " + operand2);
             System.out.println("Input bar: " + tvInput.getText());
             System.out.println("Result: " + tvResult.getText());
             //END TEST
@@ -159,33 +247,91 @@ public class MainActivity extends AppCompatActivity {
         public void onClick(View v) {
             clearError();
             clearAfterEquals();
-            calc.decimal();
-            tvInput.setText(calc.updateTVInput());
+            //If there is no operator, append the appropriate chars to operand1
+            if (operator.isEmpty()) {
+                if (!operand1.contains(".")) {
+                    if (operand1.length() > 0) {
+                        operand1 += ".";
+                    }
+                    else {
+                        operand1 += "0.";
+                    }
+                }
+            }
+            //If there is an operator, append the appropriate chars to operand2
+            else {
+                if (!operand2.contains(".")) {
+                    if (operand2.length() > 0) {
+                        operand2 = operand2 + ".";
+                    }
+                    else {
+                        operand2 = operand2 + "0.";
+                    }
+                }
+            }
+
+            //calc.decimal();
+            tvInput.setText(updateTVInput());
             //FOR TESTING
-            System.out.println("Current operator: " + calc.getOperator());
-            System.out.println("Operand1: " + calc.getOperand1());
-            System.out.println("Operand2: " + calc.getOperand2());
+            System.out.println("Current operator: " + operator);
+            System.out.println("Operand1: " + operand1);
+            System.out.println("Operand2: " + operand2);
             System.out.println("Input bar: " + tvInput.getText());
             System.out.println("Result: " + tvResult.getText());
             //END TEST
         }
     };//end decimalListener
 
+
+    //Helper methods
+
+    private boolean hasNoOperands() {
+        return operand1 == "" && operand2 == "";
+    }
+    private boolean hasOperand1() {
+        return operand1 != "" && operand2 == "";
+    }
+
+    //Method to trim result
+    public String trimResult(String str) {
+        if ((!str.isEmpty()) && (str.charAt(str.length()-1) == '.')) {
+            str = str.substring(0, str.length()-1);
+        }
+        return str;
+    }
+
+    //Method to update tvInput
+    private String updateTVInput() {
+        if (operator.isEmpty()) {
+            return operand1;
+        } else {
+            return operator + "   " + operand2;
+        }
+    }
+
+    //Method to reset variables
+    private void reset() {
+        operand1 = "";
+        operand2 = "";
+        operator = "";
+        result = "0";
+    }
+
     //Method to clear any errors in result variable and reset calculator
     private void clearError() {
-        if (calc.checkError()) {
-            calc.reset();
-            tvResult.setText(calc.updateTVInput());
-            tvResult.setText(calc.getResult());
+        if (result == "Cannot divide by 0" || result == "Error") {
+            reset();
+            tvResult.setText(updateTVInput());
+            tvResult.setText(result);
         }
     }
 
     //Method to reset calculator and display
     private void clearAfterEquals() {
-        if (calc.getOperator().equals("\u003D")) {
-            calc.reset();
-            tvInput.setText(calc.updateTVInput());
-            tvResult.setText(calc.getResult());
+        if (operator.equals("\u003D")) {
+            reset();
+            tvInput.setText(updateTVInput());
+            tvResult.setText(result);
         }
     }
 
