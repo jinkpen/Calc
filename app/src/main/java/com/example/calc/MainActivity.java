@@ -66,7 +66,6 @@ public class MainActivity extends AppCompatActivity {
         btnEquals.setOnClickListener(operatorListener);
         btnDecimal.setOnClickListener(decimalListener);
 
-
     } //end onCreate
 
     //Listener for buttons with digits
@@ -87,12 +86,6 @@ public class MainActivity extends AppCompatActivity {
                     operand2 += click;
                 }
             }
-
-
-
-
-
-            //calc.number(click);
             tvInput.setText(updateTVInput());
             //FOR TESTING
             System.out.println("Current click: " + click);
@@ -187,7 +180,7 @@ public class MainActivity extends AppCompatActivity {
             Button thisButton = findViewById(v.getId());
             String click = thisButton.getText().toString();
             if (operator.isEmpty()) {
-                if (!click.equals(R.string.txtEquals)) {
+                if (!click.equals("\u003D")) {
                     if (hasNoOperands()) {
                         result = "0";
                         operand1 = "0";
@@ -199,8 +192,8 @@ public class MainActivity extends AppCompatActivity {
                     }
                 }
             }
-            else if (operator.equals(R.string.txtEquals)) {
-                if (click.equals(R.string.txtEquals)) {
+            else if (operator.equals("\u003D")) {
+                if (click.equals("\u003D")) {
                     reset();
                 }
                 else {
@@ -286,10 +279,10 @@ public class MainActivity extends AppCompatActivity {
     //Helper methods
 
     private boolean hasNoOperands() {
-        return operand1 == "" && operand2 == "";
+        return operand1.isEmpty() && operand2.isEmpty();
     }
     private boolean hasOperand1() {
-        return operand1 != "" && operand2 == "";
+        return (!operand1.isEmpty()) && operand2.isEmpty();
     }
 
     //Method to trim result
@@ -319,7 +312,7 @@ public class MainActivity extends AppCompatActivity {
 
     //Method to clear any errors in result variable and reset calculator
     private void clearError() {
-        if (result == "Cannot divide by 0" || result == "Error") {
+        if (result.equals("Cannot divide by 0")  || result.equals("Error")) {
             reset();
             tvResult.setText(updateTVInput());
             tvResult.setText(result);

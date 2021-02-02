@@ -33,7 +33,7 @@ public class Calculator {
                     result = multiply(operand1, operand2);
                     break;
                 case "\u00F7":
-                    if (operand2.equals(R.string.txt0)) {
+                    if (operand2.equals("0")) {
                         result = "Cannot divide by 0";
                     }
                     else {
