@@ -105,6 +105,7 @@ public class Calculator {
     }//end posNegToggle method
 
     public void decimal() {
+        //If there is no operator, append the appropriate chars to operand1
         if (operator.isEmpty()) {
             if (!operand1.contains(".")) {
                 if (operand1.length() > 0) {
@@ -115,6 +116,7 @@ public class Calculator {
                 }
             }
         }
+        //If there is an operator, append the appropriate chars to operand2
         else {
             if (!operand2.contains(".")) {
                 if (operand2.length() > 0) {

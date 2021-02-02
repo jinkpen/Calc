@@ -104,7 +104,7 @@
                 android:layout_margin="8dp"
                 android:background="@drawable/btn_orange_round"
                 android:text="@string/txtDivide"
-                android:textSize="36sp" />
+                android:textSize="40sp" />
         </TableRow>
 
         <TableRow
@@ -121,7 +121,7 @@
                 android:background="@drawable/btn_darkgrey_round"
                 android:text="@string/txt7"
                 android:textColor="@color/white"
-                android:textSize="30sp" />
+                android:textSize="36sp" />
 
             <android.widget.Button
                 android:id="@+id/btn8"
@@ -131,7 +131,7 @@
                 android:background="@drawable/btn_darkgrey_round"
                 android:text="@string/txt8"
                 android:textColor="@color/white"
-                android:textSize="30sp" />
+                android:textSize="36sp" />
 
             <android.widget.Button
                 android:id="@+id/btn9"
@@ -141,7 +141,7 @@
                 android:background="@drawable/btn_darkgrey_round"
                 android:text="@string/txt9"
                 android:textColor="@color/white"
-                android:textSize="30sp" />
+                android:textSize="36sp" />
 
             <android.widget.Button
                 android:id="@+id/btnMultiply"
@@ -150,7 +150,7 @@
                 android:layout_margin="8dp"
                 android:background="@drawable/btn_orange_round"
                 android:text="@string/txtMultiply"
-                android:textSize="36sp" />
+                android:textSize="40sp" />
         </TableRow>
 
         <TableRow
@@ -167,7 +167,7 @@
                 android:background="@drawable/btn_darkgrey_round"
                 android:text="@string/txt4"
                 android:textColor="@color/white"
-                android:textSize="30sp" />
+                android:textSize="36sp" />
 
             <android.widget.Button
                 android:id="@+id/btn5"
@@ -177,7 +177,7 @@
                 android:background="@drawable/btn_darkgrey_round"
                 android:text="@string/txt5"
                 android:textColor="@color/white"
-                android:textSize="30sp" />
+                android:textSize="36sp" />
 
             <android.widget.Button
                 android:id="@+id/btn6"
@@ -187,7 +187,7 @@
                 android:background="@drawable/btn_darkgrey_round"
                 android:text="@string/txt6"
                 android:textColor="@color/white"
-                android:textSize="30sp" />
+                android:textSize="36sp" />
 
             <android.widget.Button
                 android:id="@+id/btnSubtract"
@@ -196,7 +196,7 @@
                 android:layout_margin="8dp"
                 android:background="@drawable/btn_orange_round"
                 android:text="@string/txtSubtract"
-                android:textSize="36sp" />
+                android:textSize="40sp" />
 
         </TableRow>
 
@@ -214,7 +214,7 @@
                 android:background="@drawable/btn_darkgrey_round"
                 android:text="@string/txt1"
                 android:textColor="@color/white"
-                android:textSize="30sp" />
+                android:textSize="36sp" />
 
             <android.widget.Button
                 android:id="@+id/btn2"
@@ -224,7 +224,7 @@
                 android:background="@drawable/btn_darkgrey_round"
                 android:text="@string/txt2"
                 android:textColor="@color/white"
-                android:textSize="30sp" />
+                android:textSize="36sp" />
 
             <android.widget.Button
                 android:id="@+id/btn3"
@@ -234,7 +234,7 @@
                 android:background="@drawable/btn_darkgrey_round"
                 android:text="@string/txt3"
                 android:textColor="@color/white"
-                android:textSize="30sp" />
+                android:textSize="36sp" />
 
             <android.widget.Button
                 android:id="@+id/btnAdd"
@@ -243,7 +243,7 @@
                 android:layout_margin="8dp"
                 android:background="@drawable/btn_orange_round"
                 android:text="@string/txtAdd"
-                android:textSize="36sp" />
+                android:textSize="40sp" />
         </TableRow>
 
         <TableRow
@@ -260,9 +260,9 @@
                 android:layout_span="2"
                 android:background="@drawable/btn_darkgrey_oval"
                 android:text="@string/txt0"
-                android:textAlignment="center"
+
                 android:textColor="@color/white"
-                android:textSize="30sp" />
+                android:textSize="36sp" />
 
             <android.widget.Button
                 android:id="@+id/btnDecimal"
@@ -281,7 +281,7 @@
                 android:layout_margin="8dp"
                 android:background="@drawable/btn_orange_round"
                 android:text="@string/txtEquals"
-                android:textSize="36sp" />
+                android:textSize="40sp" />
         </TableRow>
     </TableLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
@@ -289,4 +289,6 @@
     Resource used to make button colours render correctly
     https://stackoverflow.com/questions/64722733/android-background-drawable-not-working-in-button-since-android-studio-4-1
 
+    iPhone icon
+    https://www.pinterest.ca/pin/732116483161939416/
 -->
