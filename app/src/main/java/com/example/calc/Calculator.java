@@ -132,29 +132,39 @@ public class Calculator {
         }
     }// end decimal method
 
+    //Separate methods to perform calculations (as specified in requirements)
+    public String add() {
+        return String.valueOf(Double.parseDouble(operand1) + Double.parseDouble(operand2));
+    }
+    public String subtract() {
+        return String.valueOf(Double.parseDouble(operand1) - Double.parseDouble(operand2));
+    }
+    public String multiply() {
+        return String.valueOf(Double.parseDouble(operand1) * Double.parseDouble(operand2));
+    }
+    public String divide() {
+        return String.valueOf(Double.parseDouble(operand1) / Double.parseDouble(operand2));
+    }
+
     //Method to perform simple calculations
     public void calculate() {
         if (!operator.isEmpty() && !operand2.isEmpty()) {
             switch (operator) {
                 case "\u002B":
-                    result = String.valueOf(Double.parseDouble(operand1) + Double.parseDouble(operand2));
-                    System.out.println("Result in +: " + result);
+                    result = add();
                     break;
                 case "\u2212":
-                    result = String.valueOf(Double.parseDouble(operand1) - Double.parseDouble(operand2));
-                    System.out.println("Result in -: " + result);
+                    result = subtract();
                     break;
                 case "\u00D7":
-                    result = String.valueOf(Double.parseDouble(operand1) * Double.parseDouble(operand2));
-                    System.out.println("Result in : " + result);
+                    result = multiply();
                     break;
                 case "\u00F7":
                     if (operand2.equals("0")) {
                         result = "Cannot divide by 0";
                     }
                     else {
-                        result = String.valueOf(Double.parseDouble(operand1) / Double.parseDouble(operand2));
-                        System.out.println("Result in *: " + result);
+                        result = divide();
                     }
                     break;
             }

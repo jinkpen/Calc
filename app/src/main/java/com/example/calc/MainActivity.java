@@ -158,6 +158,7 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public void onClick(View v) {
             clearError();
+            clearAfterEquals();
             calc.decimal();
             tvInput.setText(calc.updateTVInput());
             //FOR TESTING
