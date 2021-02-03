@@ -159,8 +159,6 @@ public class MainActivity extends AppCompatActivity {
                     }
                 }
             }
-
-            //calc.posNegToggle();
             tvInput.setText(updateTVInput());
             //FOR TESTING
             System.out.println("Current operator: " + operator);
@@ -220,7 +218,6 @@ public class MainActivity extends AppCompatActivity {
                 }
                 operator = click;
             }
-            //calc.operation(click);
             tvInput.setText(updateTVInput());
             tvResult.setText(result);
             //FOR TESTING
@@ -262,8 +259,6 @@ public class MainActivity extends AppCompatActivity {
                     }
                 }
             }
-
-            //calc.decimal();
             tvInput.setText(updateTVInput());
             //FOR TESTING
             System.out.println("Current operator: " + operator);
@@ -314,7 +309,7 @@ public class MainActivity extends AppCompatActivity {
     private void clearError() {
         if (result.equals("Cannot divide by 0")  || result.equals("Error")) {
             reset();
-            tvResult.setText(updateTVInput());
+            tvInput.setText(updateTVInput());
             tvResult.setText(result);
         }
     }
