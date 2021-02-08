@@ -76,11 +76,13 @@ public class MainActivity extends AppCompatActivity {
             clearAfterEquals();
             Button thisButton = findViewById(v.getId());
             String click = thisButton.getText().toString();
+            //If there is no current operator, check operand 1
             if (operator.isEmpty()) {
                 if (!(operand1.length() == 1 && operand1.charAt(0) == '0')) {
                     operand1 += click;
                 }
             }
+            //If there is a current operator, check operand 2
             else {
                 if (!(operand2.length() == 1 && operand2.charAt(0) == '0')) {
                     operand2 += click;
@@ -143,6 +145,7 @@ public class MainActivity extends AppCompatActivity {
             clearAfterEquals();
             if (operator.isEmpty()) {
                 if (!operand1.isEmpty()) {
+                    //Check so 0 cannot be pos or neg
                     if (!operand1.equals("0") && !operand1.equals("0.")) {
                         if (!operand1.contains("-")) {
                             operand1 = "-" + operand1;
@@ -155,6 +158,7 @@ public class MainActivity extends AppCompatActivity {
             }
             else {
                 if (!operand2.isEmpty()) {
+                    //Check so that 0 cannot be pos or neg
                     if (!operand2.equals("0") && !operand2.equals("0.")) {
                         if (!operand2.contains("-")) {
                             operand2 = "-" + operand2;
@@ -183,7 +187,9 @@ public class MainActivity extends AppCompatActivity {
             clearError();
             Button thisButton = findViewById(v.getId());
             String click = thisButton.getText().toString();
+            //If there is no operator stored operator variable
             if (operator.isEmpty()) {
+                //If click is +, −, ×, ÷
                 if (!click.equals("\u003D")) {
                     if (hasNoOperands()) {
                         result = "0";
@@ -195,12 +201,22 @@ public class MainActivity extends AppCompatActivity {
                         operator = click;
                     }
                 }
-                //FIX BUG HERE UGH
+                //If click is =
+                else {
+                    //If operand 1 exists
+                    if (hasOperand1()) {
+                        result = trimResult(operand1);
+                        operator = click;
+                    }
+                }
             }
+            //If = is stored in the operator variable
             else if (operator.equals("\u003D")) {
+                //If the click is =
                 if (click.equals("\u003D")) {
                     reset();
                 }
+                //If click is +, −, ×, ÷
                 else {
                     if (hasNoOperands()) {
                         result = "0";
@@ -213,12 +229,13 @@ public class MainActivity extends AppCompatActivity {
                     }
                 }
             }
+            //If +, −, ×, ÷ is stored in the operator variable
             else {
                 if (hasOperand1()) {
                     result = trimResult(operand1);
                 }
+                //If both operators exist, call calc() from Calculator class
                 else {
-                    System.out.println("Calling calculate()"); //TEST
                     result = calc.equals(operator, operand1, operand2);
                     operand1 = result;
                     operand2 = "";
@@ -288,8 +305,8 @@ public class MainActivity extends AppCompatActivity {
         return (!operand1.isEmpty()) && operand2.isEmpty();
     }
 
-    //Method to trim result
-    public String trimResult(String str) {
+    //Method to trim result so there is no trailing decimal
+    private String trimResult(String str) {
         if ((!str.isEmpty()) && (str.charAt(str.length()-1) == '.')) {
             str = str.substring(0, str.length()-1);
         }
@@ -324,6 +341,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     //Method to reset calculator and display
+    //when most buttons are pressed after equals has been pressed
     private void clearAfterEquals() {
         if (operator.equals("\u003D")) {
             reset();

@@ -23,19 +23,21 @@ public class Calculator {
     public String equals(String operator, String operand1, String operand2) {
         String result = "";
             switch (operator) {
-                case "\u002B": //Add character unicode
+                case "\u002B": //If operator is +, add
                     result = add(operand1, operand2);
                     break;
-                case "\u2212":
+                case "\u2212": //If operator is −, subtract
                     result = subtract(operand1, operand2);
                     break;
-                case "\u00D7":
+                case "\u00D7": //If operator is ×, multiply
                     result = multiply(operand1, operand2);
                     break;
-                case "\u00F7":
+                case "\u00F7": //If operator is ÷
+                    //If operand 2 is 0, give divide by zero error
                     if (operand2.equals("0")) {
                         result = "Cannot divide by 0";
                     }
+                    //If operand 2 is not 0, divide
                     else {
                         result = divide(operand1, operand2);
                     }
