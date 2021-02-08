@@ -143,19 +143,25 @@ public class MainActivity extends AppCompatActivity {
             clearAfterEquals();
             if (operator.isEmpty()) {
                 if (!operand1.isEmpty()) {
-                    if (!operand1.equals("0") && !operand1.equals("0.") && !operand1.contains("-")) {
-                        operand1 = "-" + operand1;
-                    } else {
-                        operand1 = operand1.substring(1);
+                    if (!operand1.equals("0") && !operand1.equals("0.")) {
+                        if (!operand1.contains("-")) {
+                            operand1 = "-" + operand1;
+                        }
+                        else {
+                            operand1 = operand1.substring(1);
+                        }
                     }
                 }
             }
             else {
                 if (!operand2.isEmpty()) {
-                    if (!operand2.equals("0") && !operand2.equals("0.") && !operand2.contains("-")) {
-                        operand2 = "-" + operand2;
-                    } else {
-                        operand2 = operand2.substring(1);
+                    if (!operand2.equals("0") && !operand2.equals("0.")) {
+                        if (!operand2.contains("-")) {
+                            operand2 = "-" + operand2;
+                        }
+                        else {
+                            operand2 = operand2.substring(1);
+                        }
                     }
                 }
             }
@@ -189,6 +195,7 @@ public class MainActivity extends AppCompatActivity {
                         operator = click;
                     }
                 }
+                //FIX BUG HERE UGH
             }
             else if (operator.equals("\u003D")) {
                 if (click.equals("\u003D")) {
@@ -211,7 +218,7 @@ public class MainActivity extends AppCompatActivity {
                     result = trimResult(operand1);
                 }
                 else {
-                    System.out.println("Calling calculate()");
+                    System.out.println("Calling calculate()"); //TEST
                     result = calc.equals(operator, operand1, operand2);
                     operand1 = result;
                     operand2 = "";
@@ -273,6 +280,7 @@ public class MainActivity extends AppCompatActivity {
 
     //Helper methods
 
+    //Methods to check whether operands exist
     private boolean hasNoOperands() {
         return operand1.isEmpty() && operand2.isEmpty();
     }
@@ -292,7 +300,8 @@ public class MainActivity extends AppCompatActivity {
     private String updateTVInput() {
         if (operator.isEmpty()) {
             return operand1;
-        } else {
+        }
+        else {
             return operator + "   " + operand2;
         }
     }
