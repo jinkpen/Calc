@@ -68,6 +68,9 @@ public class MainActivity extends AppCompatActivity {
 
     } //end onCreate
 
+
+    //BUTTON LISTENERS
+
     //Listener for buttons with digits
     View.OnClickListener numberListener = new View.OnClickListener() {
         @Override
@@ -295,7 +298,7 @@ public class MainActivity extends AppCompatActivity {
     };//end decimalListener
 
 
-    //Helper methods
+    //HELPER METHODS
 
     //Methods to check whether operands exist
     private boolean hasNoOperands() {
@@ -307,8 +310,23 @@ public class MainActivity extends AppCompatActivity {
 
     //Method to trim result so there is no trailing decimal
     private String trimResult(String str) {
-        if ((!str.isEmpty()) && (str.charAt(str.length()-1) == '.')) {
-            str = str.substring(0, str.length()-1);
+        if (!str.isEmpty()) {
+            if (str.contains(".")) {
+                //While there are zeros on the end of the decimal trim them off
+                while (str.charAt(str.length()-1) == '0') {
+                    str = str.substring(0, str.length()-1);
+                }
+                //If the last character left is decimal, trim it
+                if (str.charAt(str.length()-1) == '.') {
+                    str = str.substring(0, str.length()-1);
+                }
+
+            }
+            //Handles edge case where backspacing a neg decimal
+            //leaves result displaying -0
+            if (str.equals("-0")) {
+                str = str.substring(1);
+            }
         }
         return str;
     }
@@ -333,7 +351,7 @@ public class MainActivity extends AppCompatActivity {
 
     //Method to clear any errors in result variable and reset calculator
     private void clearError() {
-        if (result.equals("Cannot divide by 0")  || result.equals("Error")) {
+        if (result.equals("NaN")  || result.equals("Error")) {
             reset();
             tvInput.setText(updateTVInput());
             tvResult.setText(result);

@@ -35,7 +35,7 @@ public class Calculator {
                 case "\u00F7": //If operator is ÷
                     //If operand 2 is 0, give divide by zero error
                     if (operand2.equals("0")) {
-                        result = "Cannot divide by 0";
+                        result = "NaN";
                     }
                     //If operand 2 is not 0, divide
                     else {
