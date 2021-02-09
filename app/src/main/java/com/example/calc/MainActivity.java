@@ -79,16 +79,23 @@ public class MainActivity extends AppCompatActivity {
             clearAfterEquals();
             Button thisButton = findViewById(v.getId());
             String click = thisButton.getText().toString();
-            //If there is no current operator, check operand 1
+            //If there is no stored operator, check operand 1
             if (operator.isEmpty()) {
+                //If 0 is not the only char in the string
                 if (!(operand1.length() == 1 && operand1.charAt(0) == '0')) {
                     operand1 += click;
                 }
+                else {
+                    operand1 = click;
+                }
             }
-            //If there is a current operator, check operand 2
+            //If there is a stored operator, check operand 2
             else {
                 if (!(operand2.length() == 1 && operand2.charAt(0) == '0')) {
                     operand2 += click;
+                }
+                else {
+                    operand2 = click;
                 }
             }
             tvInput.setText(updateTVInput());
@@ -320,10 +327,9 @@ public class MainActivity extends AppCompatActivity {
                 if (str.charAt(str.length()-1) == '.') {
                     str = str.substring(0, str.length()-1);
                 }
-
             }
             //Handles edge case where backspacing a neg decimal
-            //leaves result displaying -0
+            //could leave result displaying -0
             if (str.equals("-0")) {
                 str = str.substring(1);
             }
