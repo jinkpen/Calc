@@ -99,14 +99,6 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
             tvInput.setText(updateTVInput());
-            //FOR TESTING
-            System.out.println("Current click: " + click);
-            System.out.println("Current operator: " + operator);
-            System.out.println("Operand1: " + operand1);
-            System.out.println("Operand2: " + operand2);
-            System.out.println("Input bar: " + tvInput.getText());
-            System.out.println("Result: " + tvResult.getText());
-            //END TEST
         }
     }; //end numberListener
 
@@ -137,13 +129,6 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
             tvInput.setText(updateTVInput());
-            //FOR TESTING
-            System.out.println("Current operator: " + operator);
-            System.out.println("Operand1: " + operand1);
-            System.out.println("Operand2: " + operand2);
-            System.out.println("Input bar: " + tvInput.getText());
-            System.out.println("Result: " + tvResult.getText());
-            //END TEST
         }
     };//end backspaceListener
 
@@ -180,13 +165,6 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
             tvInput.setText(updateTVInput());
-            //FOR TESTING
-            System.out.println("Current operator: " + operator);
-            System.out.println("Operand1: " + operand1);
-            System.out.println("Operand2: " + operand2);
-            System.out.println("Input bar: " + tvInput.getText());
-            System.out.println("Result: " + tvResult.getText());
-            //END TEST
         }
     };//end posNegListener
 
@@ -254,14 +232,6 @@ public class MainActivity extends AppCompatActivity {
             }
             tvInput.setText(updateTVInput());
             tvResult.setText(result);
-            //FOR TESTING
-            System.out.println("Current click: " + click);
-            System.out.println("Current operator: " + operator);
-            System.out.println("Operand1: " + operand1);
-            System.out.println("Operand2: " + operand2);
-            System.out.println("Input bar: " + tvInput.getText());
-            System.out.println("Result: " + tvResult.getText());
-            //END TEST
         }
     }; //end operatorListener
 
@@ -294,13 +264,6 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
             tvInput.setText(updateTVInput());
-            //FOR TESTING
-            System.out.println("Current operator: " + operator);
-            System.out.println("Operand1: " + operand1);
-            System.out.println("Operand2: " + operand2);
-            System.out.println("Input bar: " + tvInput.getText());
-            System.out.println("Result: " + tvResult.getText());
-            //END TEST
         }
     };//end decimalListener
 
