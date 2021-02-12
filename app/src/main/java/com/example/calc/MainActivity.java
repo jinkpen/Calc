@@ -5,6 +5,16 @@ import android.os.Bundle;
 import android.widget.*;
 import android.view.View;
 
+/*
+    Rolling calculator for Android 29 (Q) or higher.
+    The interface is based on the iOS calculator
+    (iOS 11 onward). Don't be fooled; it is iPhoney.
+
+    Author: Jess Inkpen
+    Program written in accordance with instructions
+    for assignment 1, MOBI 3002, NSCC, Winter-2021.
+ */
+
 public class MainActivity extends AppCompatActivity {
     private TextView tvInput;
     private TextView tvResult;
