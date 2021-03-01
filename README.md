@@ -8,7 +8,7 @@ for Android OS, styled to look similar to the
 calculator for iOS (version 11 and later). One
 Might even call the calculator iPhoney.
 
-![Screen shot of iPhoney rolling calculator](/iPhoneyCalcScreenshot?raw=true)
+![Screen shot of iPhoney rolling calculator](/iPhoneyCalcScreenshot.png?raw=true)
 
 The calculator allows the user to view their input,
 undo their input with the backspace button, toggle
