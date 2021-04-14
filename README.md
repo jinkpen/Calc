@@ -6,7 +6,7 @@
 This application is a simple rolling calculator
 for Android OS, styled to look similar to the
 calculator for iOS (version 11 and later). One
-Might even call the calculator iPhoney.
+might even call the calculator iPhoney.
 
 ![Screen shot of iPhoney rolling calculator](/iPhoneyCalcScreenshot.png?raw=true)
 
